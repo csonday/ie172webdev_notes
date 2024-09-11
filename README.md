@@ -1,402 +1,212 @@
-Module 1b: Building a Dash App
+# Module 1A: Python Virtual environments
+<!-- vscode-markdown-toc -->
+* 1. [Preliminaries](#Preliminaries)
+* 2. [Python Virtual Environments](#PythonVirtualEnvironments)
+* 3. [Creating your First Venv](#CreatingyourFirstVenv)
+	* 3.1. [Decide the location](#Decidethelocation)
+	* 3.2. [CLI Basics](#CLIBasics)
+	* 3.3. [Proceed to the Venv folder using the CLI](#ProceedtotheVenvfolderusingtheCLI)
+	* 3.4. [Install `virtualenv`](#Installvirtualenv)
+	* 3.5. [Create your venv](#Createyourvenv)
+* 4. [Activate your Venv](#ActivateyourVenv)
+	* 4.1. [What makes this venv new?](#Whatmakesthisvenvnew)
+	* 4.2. [Activate the Venv](#ActivatetheVenv)
+		* 4.2.1. [Windows](#Windows)
+		* 4.2.2. [Mac](#Mac)
+* 5. [Setting up on VS Code](#SettinguponVSCode)
 
-## Preliminaries
-You will need the following before we start.
-* Internet connectivity
-* A new folder in your workspace to contain scripts, `MyFirstApp`
-  * All your codes should be inside this folder
-* Open VS Code, ensure that the venv from Module 1a is active
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
 
-## Install Dependencies
-**Dependencies** are the packages that you need to make your project work. 
+##  1. <a name='Preliminaries'></a>Preliminaries
+For this section, you will need access to the following
+* Internet connection 
+* Access to CLI Terminals (Windows Powershell, Mac OS Termina, CMD)
 
-Open the terminal in VS Code through the menu, `Terminal > New Terminal`. With your venv active, execute each line of code below -- one-at-a-time.
+
+##  2. <a name='PythonVirtualEnvironments'></a>Python Virtual Environments
+Generally, a **Python Virtual Environment** is an isolated space within your computer where you can work on your Python projects -- separately from your system-installed Python [^1]. 
+
+**Why?**
+
+In web development, all projects do not have the same dependencies or packages (see imports). Some projects will require `pandas`, some projects don't. Some projects need special packages for AI, some do not.
+
+**Why?**
+
+To deploy a web application, you have to configure a *virtual Machine* based on the Python settings of your project. A virtual machine (VM) is a remotely accessible computer -- usually connected to a network for web deployment. When a VM is created for a project, it is literally a computer with no applications, only the operating system. You will need to install the required applications.
+
+**How does a Python Environment help with that?**
+
+When a virtual environment is created, it is a *vanilla* Python -- i.e. no configurations, no installed dependencies. You get to start from scratch and you get to track your configurations. It's like cloning your Python so each project gets its *custom* Python build. 
+
+
+##  3. <a name='CreatingyourFirstVenv'></a>Creating your First Venv
+Follow these steps to create your first virtual environment (venv).
+###  3.1. <a name='Decidethelocation'></a>Decide the Location
+Create a location for your venv. 
+Personally, I put it in a folder away from my py scripts. Usually, you share the folder with py scripts with your co-developers, but you do not share the folder with your venv.
+
+Pick a convenient location in your PCs. For me, I have a fixed location for venvs. 
+
+![venvimg](readme_img/venv_dir.png)
+For demo purposes, I have `D:\vevs\` as a directory for my venvs.
+
+###  3.2. <a name='CLIBasics'></a>CLI Basics
+Open your preferred CLI (CMD, Windows Powershell, Mac OS Terminal). For MacOS users, search for the Terminal App. For Windows, search for PowerShell. 
+
+A terminal is basically a file explorer but instead of clicking icons, you enter commands. When you open a terminal, you get the following view. 
+
+![term_win](readme_img/term_open.png)
+
+You get this for Windows.
+
+![term_mac](./readme_img/term_open_mac.png)
+
+This one from MacOS. (Photo grabbed from Apple Support)
+
+You can see hear that you are at a particular directory. For the PowerShell screenshot, we have `Users` while we have `Dannys-Air` for the Terminal one.
+
+Basic commands you should know
+* `ls` -- Lists the contents of the current directory
+* `cd <path>` -- changes directory to the specified path. Path can simply be a folder name inside the current directory
+* *`cd ..` -- Go up one folder above.
+
+###  3.3. <a name='ProceedtotheVenvfolderusingtheCLI'></a>Proceed to the Venv folder using the CLI
+First, get the path to your venv folder. The easiest way to do this is via your file explorer. 
+
+Locate your folder and `right-click > Copy as Path`. 
+
+Proceed to your terminal and type the following
+```
+cd "<path>"
+``` 
+Replace `<path>` with the path you copied. The double-quotes may be important here.
+After pressing Enter/Return, you get the following. 
+
+![venvcli](./readme_img/venvdir.png)
+
+
+###  3.4. <a name='Installvirtualenv'></a>Install `virtualenv`
+
+The package `virtualenv` creates your Venvs for you. Installing it requires the Internet.
+
+On your Terminal, type the following:
 
 ```
-pip install dash
-pip install dash_bootstrap_components
+pip install virtualenv
 ```
 
-* `dash` -- This is the package that provides us with functions to customize our application
-* `dash_bootstrap_components` -- This is to make the application look better 
+MacOS users may require `pip3` instead of `pip`.
 
-## Setup your App File
-For this exercise, we will setup a single-page website. Create a blank script, `app.py`.
+###  3.5. <a name='Createyourvenv'></a>Create your venv
+Creating virtual environments has the following syntax:
 
-## The `app.py` Code Structure 
-
-### `import` Dependencies
-Start writing scripts in `app.py` by adding the packages needed for your application.
-
-```python
-import webbrowser
-
-import dash
-import dash_bootstrap_components as dbc
-from dash import dcc, html
 ```
-I know dash and dash_bootstrap_components.What are the others?
-* `webbrowser` -- This has a function so we can open the web browser automatically when we run the app
-* `dcc` -- This contains functions used to define interactive elements in code
-* `html` -- This provides a way for us to add html elements to our app
+virtualenv <environment_name>
+```
+The environment name is used for quick identification. 
 
-
-### Define your application object
-
-The application object, `app`, is defined by the following command:
-```python
-app = dash.Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP])
+Let's create your new venv. Run the following scripts. 
+```
+virtualenv ie172_lectures
 ```
 
-### Setup your App Title and Initial Layout
-
-After defining your `app` as an application, we setup the title and the initial layout.
-
-```python
-app.title = "My First Dash App"
-
-app.layout = html.Div(
-	"Hello World"
-)
+This might take a while. It's done when the cursor starts blinking again. You may also verify this by running the following on your terminal:
 ```
-The app title will showup on your browser's tab. In HTML, a Div is your basic container of elements (think, "division"). 
-
-### Run the Server
-Write the scripts that will run the app.
-```python
-if __name__ == '__main__':
-    webbrowser.open('http://127.0.0.1:8050', autoraise=True)
-    app.run_server()
-```
-This command opens your default browser. 
-
-Your app should now look like this:
-
-![appinitial](./readme_img/helloworld.png)
-
-
-### Kill the Server
-
-To restart the server, it has to be stopped first. 
-
-While the app is running, focus on the terminal and do `Ctrl+C` or `Cmd+C` to kill the server. 
-
-
-## Specify this App's Functionalities
-Let's make the app actually do something. Setup a new py file `utilities.py` to contain the scripts below:
-```python
-def getFactorial(num):
-	if num < 0:
-		raise Exception("Number must be nonnegative")
-	elif num <= 1:
-		return 1
-	else:
-		return num*getFactorial(num-1) 
-
-
-def generateFibonacci(num_elements):
-	if num_elements <= 0:
-		raise Exception("Fibonacci elements must be at least 1")
-	elif num_elements == 1:
-		return [0]
-	elif num_elements == 2:
-		return [0, 1]
-	else:
-		reference_fib = generateFibonacci(num_elements-1)
-		return reference_fib + [reference_fib[-1] + reference_fib[-2]] 
+ls
 ```
 
-The app shall have the following features:
-* The app takes an input from the user via a textbox.
-* The user selects which function from casefunctions.py will be used to process the input. Selection will be based on a dropdown list.
-* A button will be used to confirm if selection is final.
-* A section will be dedicated to containing the outputs.
+Or, just checking your file explorer for a new folder named `ie172_lectures`
 
-Interface Mockup
+##  4. <a name='ActivateyourVenv'></a>Activate your Venv
+###  4.1. <a name='Whatmakesthisvenvnew'></a>What makes this venv new?
+As mentioned earlier, venvs are "clean clones" of Python. To compare, execute the following to show the installed dependencies in your system-installed Python. 
+```
+pip freeze
+```
+*MacOS might use `pip3`
 
-![mockup](./readme_img/mockup.jpg)
+For my case, here are the dependencies. 
 
+![pip](./readme_img/pipfreeze.png)
 
-## Set up the Layout
+Take note of these outputs. 
 
-To modify the layout of the application, we have to modify the definition to the `app.layout` variable. 
+###  4.2. <a name='ActivatetheVenv'></a>Activate the Venv
 
-We have two references for adding elements into the web page:
-* `html` [ref](https://dash.plotly.com/dash-html-components) (dash) -- for generic HTML elements (div, span, etc)
-* `dbc` [ref](https://dash-bootstrap-components.opensource.faculty.ai/docs/components/) (dash_bootstrap_components) -- for interactive form elements (text boxes, dropdowns, etc)
-
-Regarding the main container of the mockup, the element looks much like a `dbc.Card` [ref](https://dash-bootstrap-components.opensource.faculty.ai/docs/components/card/) element. Click the link to the reference and copy the code pictured below. 
-
-![dbccard](./readme_img/dbccard.png)
-
-Using the copied scripts, your `app.layout` should look like the following:
-
-```python
-app.layout = html.Div(
-    [
-        dbc.Card(
-            [
-                dbc.CardHeader("This is the header"),
-                dbc.CardBody(
-                    [
-                        html.H4("Card title", className="card-title"),
-                        html.P("This is some card text", className="card-text"),
-                    ]
-                ),
-                dbc.CardFooter("This is the footer"),
-            ],
-            style={"width": "18rem"},
-        )
-    ]
-)
+####  4.2.1. <a name='Windows'></a>Windows
+For Windows users, want to run the `activate` file inside your venv folder. Generally, it's in the following directory 
+```
+<venvname>/Scripts/activate
 ```
 
-Things to take note: 
-1. All functions with `html.` and `dbc.` are known as **HTML wrappers**.
-2. The contents of a wrapper is referred to as `children`.
-3. A wrapper can contain other wrappers.
-4. If a container has multiple children, enclose them in square brackets `[]`, 
+If you run `ls` and your venv folder is there, simply run the script above -- remember to replace the appropriate venvname.
 
-At this point, you can run your `app.py` again to check the contents. 
-
-![appupdate](./readme_img/cardview.png)
-
-
-By comparing the code and the image, we can now associate where the texts should go. Let's try to get closer to the mockup. Here are things to do. 
-* Edit the card header.
-* Replace the card body contents. Add placeholders.
-* Remove the footer
-
-Check the scripts below for the modified version.
-
-```python
-app.layout = html.Div(
-    [
-        dbc.Card(
-            [
-                dbc.CardHeader("First Dash App"),
-                dbc.CardBody(
-                    [
-                       "input value", 
-                       "process selection", 
-                       "button", 
-                       "output area"
-                    ]
-                ),
-            ],
-            style={"width": "18rem"},
-        )
-    ]
-)
+####  4.2.2. <a name='Mac'></a>Mac
+Make sure that when you run `ls`, your venv folder shows up. Here's your syntax to activate your venv.
+```
+source <venvname>/bin/activate
 ```
 
-### Adding more elements
+`source` simply means to execute the specified file in the given directory.
 
-To add the other elements, we go through the `dbc` [reference page](https://dash-bootstrap-components.opensource.faculty.ai/docs/components/) (click link). 
 
-For input components, click on `Input` from the sidebar. Find a peg and place them inside `app.layout`. For this project, we're using the one below.
+For either OS, you know that the venv is activated when you have the venvname near the cursor.
 
-![inputfield](./readme_img/labelinput.png)
+![activevenv](./readme_img/activevenv.png)
 
-We would also like to add a dropdown. Proceed to find the Select element from the same page of the documentation. 
 
-After adding these input fields, we have the following for the `dbc.CardBody` element. 
+With your venv active, run `pip freeze`. What's the difference?
 
-```python
-                dbc.CardBody(
-                    [
-                        html.Div(
-                            [
-                                dbc.Label("Number"),
-                                dbc.Input(placeholder="Place a number here", type="text", id='num_input'),
-                                dbc.FormText("Negative numbers are not allowed."),
-                            ]
-                        ), 
-                        html.Div(
-                            [
-                                dbc.Label("Process"),
-                                dbc.Select(
-                                    id="process_select",
-                                    options=[
-                                        {"label": "Get Factorial", "value": 1},
-                                        {"label": "Generate Fibonacci", "value": 2},
-                                    ],
-                                ),
-                                dbc.FormText("Select an operation"),
-                            ]
-                        ), 
-                       "button", 
-                       "output area"
-                    ]
-                ),
+All py files run via this terminal instance will now use the venv as its Python.
+
+### Deactivating a Venv
+
+When a venv is active, run the following to deactivate it. 
+```
+deactivate
 ```
 
-Things to note:
-1. For the dropdown/select, we simply copied the first Div and replaced the `dbc.Input()` part.
-2. For elements that will be interactive (i.e. input fields, output areas), the argument `id` must be added. Values for `id` must be unique.
-
-Now, you know the drill. Let's add a `dbc.Button()` for the "button" and for the output area, let's just put in a `html.Div()`
-
-Here's the resulting script. 
-
-```python
-                dbc.CardBody(
-                    [
-                        html.Div(
-                            [
-                                dbc.Label("Number"),
-                                dbc.Input(placeholder="Place a number here", type="text", id='num_input'),
-                                dbc.FormText("Negative numbers are not allowed."),
-                            ]
-                        ), 
-                        html.Div(
-                            [
-                                dbc.Label("Process"),
-                                dbc.Select(
-                                    id="process_select",
-                                    options=[
-                                        {"label": "Get Factorial", "value": 1},
-                                        {"label": "Generate Fibonacci", "value": 2},
-                                    ],
-                                ),
-                                dbc.FormText("Select an operation"),
-                            ]
-                        ), 
-                        dbc.Button("Calculate!", id='btn_calculate', color='primary', n_clicks=0),
-                        html.Div(id='output_area')
-                    ]
-                ),
-```
-Things to note:
-1. The button and the div are both interactive. We expect a response from these elements.
-2. The div has no children, but it must have an `id` since it is interactive. 
-3. We specify the argument `n_clicks = 0` for the button to initialize its clicked state.
-
-Here's our layout now. 
-
-![layout](./readme_img/finallayout.png)
-
-It does not look very nice, but that's okay. Making things pretty is for another time. 
-
-## Make the Components Interactive
-
-You can click on stuff now but they do not work yet. To make them function, we need to define an [app callback](https://dash.plotly.com/basic-callbacks).
-
-Update your imports!
-
-```python
-from dash import dcc, html, Input, Output, State, callback
-from dash.exceptions import PreventUpdate
-```
-
-A callback has 3 parts: Input, Output, and State
-* An `Input` element **triggers a function** when its value is altered.
-* An `Output` element is **updated based on the return value** of the triggered function.
-* A `State` element is a **value that is passed** into the triggered function. This is an optional element.
-
-Each of these elements require 2 arguments: `element_id` and `property`:
-|              | Input                                                            | Output                                   | State                                            |
-| ------------ | ---------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------ |
-| `element_id` | The `id` of the triggering element                               | The `id` of the element to be updated    | The `id` of the element whose value is extracted |
-| `property`   | The change on this argument of the element triggers the function | This argument is updated for the element | The value of this argument is extracted          |
+Any py files run from now on will use the system-installed Python.
 
 
-So, for our case, what do we want to happen?
+##  5. <a name='SettinguponVSCode'></a>Setting up on VS Code
 
-> If the **button is clicked**, we use the values in **num_input** and **process_select** to display the result as children of **output_area**.
+When you activate a venv, it's only active *for that window*. VS Code assists us so that whenever we open a project or workspace, it retains the activation of a venv.
 
-Here is the resulting callback. Put it **after** defining the `app.layout` but before running the server.
+### Open your VS Code Workspace
 
-```python
-@callback(
-	[
-		Output('output_area', 'children')
-	],
-	[
-		Input('btn_calculate', 'n_clicks')
-	], 
-	[
-		State('num_input', 'value'), 
-		State('process_select', 'value')
-	]
-)
-```
+If you don't have a workspace yet, open VS Code and your folders. Proceed to `File > Save Workspace As...` then click Save. 
 
-Right below the callback, define the function that will execute whatever the procedure is. Here is the structure of this function.
-```python
-@callback(
-	[
-		Output('output_area', 'children')
-	],
-	[
-		Input('btn_calculate', 'n_clicks')
-	], 
-	[
-		State('num_input', 'value'), 
-		State('process_select', 'value')
-	]
-)
-def calculateResults(btncalculate_clicks, num_input, process_select):
-	# do something
-	return [output values]
-```
+*Why do we like workspaces?* These workspaces come in handy when we have projects with specific setups. When it comes to venvs, different projects have different venvs. Workspaces save us time by remembering the venvs for each workspace. 
 
-The way we assign values to the arguments of the function `calculateResults()` is positional. 
-* `btncalculate_clicks` gets its value from `Input('btn_calculate', 'n_clicks')`
-* `num_input` gets its value from `Input('num_input', 'value')`
-* `process_select` gets its value from `Input('process_select', 'value')`
+### Select a Python Interpreter
+A **Python Interpreter** is a Python *instance* that is used to execute Python programs. We now know that a PC can have many Python instances. 
 
+In VS Code, you may start by opening the Command Palette by `Ctrl-Shift-P` or `Cmd-Shift-P`. Type in `Interpreter`. Select `Python: Select Interpreter`.
 
+![selectint](./readme_img/select_interpreter.png)
 
-Let's complete the function. Import utilites first. 
+Pick `Enter interpreter path` > `Find`. 
 
-```python
-from utilities import generateFibonacci, getFactorial
+Locate your venv folder, then select the following file: `Scripts/python`
 
-@app.callback(
-	[
-		Output('output_area', 'children')
-	],
-	[
-		Input('btn_calculate', 'n_clicks')
-	], 
-	[
-		State('num_input', 'value'), 
-		State('process_select', 'value')
-	]
-)
-def calculateResults(btncalculate_clicks, num_input, process_select):
-    if btncalculate_clicks > 0:
-        num_input = int(num_input)
-        process_select = int(process_select)
+![pickpy](./readme_img/vscode_setup.png)
 
-        if process_select == 1:
-            factorial_value = getFactorial(num_input)
-            output_val = str(factorial_value)
+### Verify the Interpreter
 
-        elif process_select == 2:
-            fib_sequence = generateFibonacci(num_input)
-            fib_sequence_str = [str(i) for i in fib_sequence]
-            output_val = ", ".join(fib_sequence_str)
-            
-        else:
-            raise PreventUpdate
+For this one, open or create a py file. The active Python interpreter should be reflected at the bottom status bar. 
 
-    else:
-        raise PreventUpdate
-    
-    return [output_val]
-```
+![interpreter](./readme_img/interpret.png)
 
-Things to note
-* We convert `num_input` and `process_select` into integers mainly because they became strings when the function executed
-* All children of divs should be strings. Hence, note that we processed the function values further so they could become strings. 
-* The `return` is always enclosed in square brackets. 
+## Add on: VS Code Terminal
 
-## Additional work to be done -- Challenge Yourselves!
+VS Code also has a terminal -- same terminal as the one you used before but inside VS Code. When working on projects, this can be convenient to use because of the following:
+* venv is automatically active (if your workspace has a venv)
+* It automatically points to your project directory
 
-1. Currently, the program assumes that all inputs are valid. In case the inputs are invalid, let the application tell the user of their error via the output area. 
-2. Format the output strings. 
-   1. The factorial displays "The factorial is ___."
-   2. The generator displays "We get the sequence _____."
-
+[^1] https://www.geeksforgeeks.org/python-virtual-environment/
+[^notes] All these scripts were tailor-fit to the needs of the course. 
