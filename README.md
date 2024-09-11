@@ -77,7 +77,7 @@ Basic commands you should know
 ###  3.3. <a name='ProceedtotheVenvfolderusingtheCLI'></a>Proceed to the Venv folder using the CLI
 First, get the path to your venv folder. The easiest way to do this is via your file explorer. 
 
-Locate your folder and right-click > Copy as Path. 
+Locate your folder and `right-click > Copy as Path`. 
 
 Proceed to your terminal and type the following
 ```
