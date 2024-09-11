@@ -40,7 +40,7 @@ To deploy a web application, you have to configure a *virtual Machine* based on 
 
 **How does a Python Environment help with that?**
 
-When a virtual environment is created, it is a *vanilla* Python -- i.e. no configurations, no installed dependencies. You get to start from scratch and you get to track your configurations. It's like cloning your Python for each project that you have so you know what goes on in each project. 
+When a virtual environment is created, it is a *vanilla* Python -- i.e. no configurations, no installed dependencies. You get to start from scratch and you get to track your configurations. It's like cloning your Python so each project gets its *custom* Python build. 
 
 
 ##  3. <a name='CreatingyourFirstVenv'></a>Creating your First Venv
