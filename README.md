@@ -2,5 +2,5 @@ This repo contains materials for studying web developement under IE 172: Informa
 
 - Module 1: First Dash App
     - [a: Virtual Environments](https://github.com/csonday/ie172webdev_notes/tree/module1a)
-    - b: Dash
+    - [b: Dash](https://github.com/csonday/ie172webdev_notes/tree/module1b)
     - c: CSS
