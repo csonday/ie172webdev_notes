@@ -202,12 +202,11 @@ For this one, open or create a py file. The active Python interpreter should be 
 
 ![interpreter](./readme_img/interpret.png)
 
-## Add on: VS Code Terminal
+# Add on: VS Code Terminal
 
 VS Code also has a terminal -- same terminal as the one you used before but inside VS Code. When working on projects, this can be convenient to use because of the following:
 * venv is automatically active (if your workspace has a venv)
 * It automatically points to your project directory
-
 
 [^1] https://www.geeksforgeeks.org/python-virtual-environment/
 [^notes] All these scripts were tailor-fit to the needs of the course. 
