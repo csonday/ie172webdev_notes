@@ -67,12 +67,12 @@ You get this for Windows.
 
 This one from MacOS. (Photo grabbed from Apple Support)
 
-You can see hear that you are at a particular directory. For the PowerShell screenshot, we have `Users` while we have `Dannys-Air` for the Terminal one.
+You can see here that you are at a particular directory. For the PowerShell screenshot, we have `Users` while we have `Dannys-Air` for the Terminal one.
 
 Basic commands you should know
 * `ls` -- Lists the contents of the current directory
 * `cd <path>` -- changes directory to the specified path. Path can simply be a folder name inside the current directory
-* *`cd ..` -- Go up one folder above.
+* `cd ..` -- Go up one folder above.
 
 ###  3.3. <a name='ProceedtotheVenvfolderusingtheCLI'></a>Proceed to the Venv folder using the CLI
 First, get the path to your venv folder. The easiest way to do this is via your file explorer. 
