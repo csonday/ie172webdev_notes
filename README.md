@@ -1,13 +1,34 @@
-Module 1b: Building a Dash App
+# Module 1b: Building your First Dash App
+<!-- vscode-markdown-toc -->
+* 1. [Preliminaries](#Preliminaries)
+* 2. [Install Dependencies](#InstallDependencies)
+* 3. [Setup your App File](#SetupyourAppFile)
+* 4. [The `app.py` Code Structure](#Theapp.pyCodeStructure)
+	* 4.1. [`import` Dependencies](#importDependencies)
+	* 4.2. [Define your application object](#Defineyourapplicationobject)
+	* 4.3. [Setup your App Title and Initial Layout](#SetupyourAppTitleandInitialLayout)
+	* 4.4. [Run the Server](#RuntheServer)
+	* 4.5. [Kill the Server](#KilltheServer)
+* 5. [Specify this App's Functionalities](#SpecifythisAppsFunctionalities)
+* 6. [Set up the Layout](#SetuptheLayout)
+	* 6.1. [Adding more elements](#Addingmoreelements)
+* 7. [Make the Components Interactive](#MaketheComponentsInteractive)
+* 8. [Additional work to be done -- Challenge Yourselves!](#Additionalworktobedone--ChallengeYourselves)
 
-## Preliminaries
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+##  1. <a name='Preliminaries'></a>Preliminaries
 You will need the following before we start.
 * Internet connectivity
 * A new folder in your workspace to contain scripts, `MyFirstApp`
   * All your codes should be inside this folder
 * Open VS Code, ensure that the venv from Module 1a is active
 
-## Install Dependencies
+##  2. <a name='InstallDependencies'></a>Install Dependencies
 **Dependencies** are the packages that you need to make your project work. 
 
 Open the terminal in VS Code through the menu, `Terminal > New Terminal`. With your venv active, execute each line of code below -- one-at-a-time.
@@ -20,12 +41,12 @@ pip install dash_bootstrap_components
 * `dash` -- This is the package that provides us with functions to customize our application
 * `dash_bootstrap_components` -- This is to make the application look better 
 
-## Setup your App File
+##  3. <a name='SetupyourAppFile'></a>Setup your App File
 For this exercise, we will setup a single-page website. Create a blank script, `app.py`.
 
-## The `app.py` Code Structure 
+##  4. <a name='Theapp.pyCodeStructure'></a>The `app.py` Code Structure 
 
-### `import` Dependencies
+###  4.1. <a name='importDependencies'></a>`import` Dependencies
 Start writing scripts in `app.py` by adding the packages needed for your application.
 
 ```python
@@ -41,14 +62,14 @@ I know dash and dash_bootstrap_components.What are the others?
 * `html` -- This provides a way for us to add html elements to our app
 
 
-### Define your application object
+###  4.2. <a name='Defineyourapplicationobject'></a>Define your application object
 
 The application object, `app`, is defined by the following command:
 ```python
 app = dash.Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP])
 ```
 
-### Setup your App Title and Initial Layout
+###  4.3. <a name='SetupyourAppTitleandInitialLayout'></a>Setup your App Title and Initial Layout
 
 After defining your `app` as an application, we setup the title and the initial layout.
 
@@ -61,7 +82,7 @@ app.layout = html.Div(
 ```
 The app title will showup on your browser's tab. In HTML, a Div is your basic container of elements (think, "division"). 
 
-### Run the Server
+###  4.4. <a name='RuntheServer'></a>Run the Server
 Write the scripts that will run the app.
 ```python
 if __name__ == '__main__':
@@ -75,14 +96,14 @@ Your app should now look like this:
 ![appinitial](./readme_img/helloworld.png)
 
 
-### Kill the Server
+###  4.5. <a name='KilltheServer'></a>Kill the Server
 
 To restart the server, it has to be stopped first. 
 
 While the app is running, focus on the terminal and do `Ctrl+C` or `Cmd+C` to kill the server. 
 
 
-## Specify this App's Functionalities
+##  5. <a name='SpecifythisAppsFunctionalities'></a>Specify this App's Functionalities
 Let's make the app actually do something. Setup a new py file `utilities.py` to contain the scripts below:
 ```python
 def getFactorial(num):
@@ -108,7 +129,7 @@ def generateFibonacci(num_elements):
 
 The app shall have the following features:
 * The app takes an input from the user via a textbox.
-* The user selects which function from casefunctions.py will be used to process the input. Selection will be based on a dropdown list.
+* The user selects which function from `utilities.py` will be used to process the input. Selection will be based on a dropdown list.
 * A button will be used to confirm if selection is final.
 * A section will be dedicated to containing the outputs.
 
@@ -117,7 +138,7 @@ Interface Mockup
 ![mockup](./readme_img/mockup.jpg)
 
 
-## Set up the Layout
+##  6. <a name='SetuptheLayout'></a>Set up the Layout
 
 To modify the layout of the application, we have to modify the definition to the `app.layout` variable. 
 
@@ -152,8 +173,8 @@ app.layout = html.Div(
 ```
 
 Things to take note: 
-1. All functions with `html.` and `dbc.` are known as **HTML wrappers**.
-2. The contents of a wrapper is referred to as `children`.
+1. All functions with `html.` and `dbc.` are functions that work as **HTML wrappers**.
+2. The contents of a wrapper are referred to as `children`.
 3. A wrapper can contain other wrappers.
 4. If a container has multiple children, enclose them in square brackets `[]`, 
 
@@ -164,7 +185,7 @@ At this point, you can run your `app.py` again to check the contents.
 
 By comparing the code and the image, we can now associate where the texts should go. Let's try to get closer to the mockup. Here are things to do. 
 * Edit the card header.
-* Replace the card body contents. Add placeholders.
+* Replace the card body contents. Add placeholders fields inside the form.
 * Remove the footer
 
 Check the scripts below for the modified version.
@@ -190,7 +211,7 @@ app.layout = html.Div(
 )
 ```
 
-### Adding more elements
+###  6.1. <a name='Addingmoreelements'></a>Adding more elements
 
 To add the other elements, we go through the `dbc` [reference page](https://dash-bootstrap-components.opensource.faculty.ai/docs/components/) (click link). 
 
@@ -278,9 +299,9 @@ Here's our layout now.
 
 It does not look very nice, but that's okay. Making things pretty is for another time. 
 
-## Make the Components Interactive
+##  7. <a name='MaketheComponentsInteractive'></a>Make the Components Interactive
 
-You can click on stuff now but they do not work yet. To make them function, we need to define an [app callback](https://dash.plotly.com/basic-callbacks).
+You can click on stuff now but they do not work yet. To make them interactive, we need to define an [app callback](https://dash.plotly.com/basic-callbacks).
 
 Update your imports!
 
@@ -393,7 +414,7 @@ Things to note
 * All children of divs should be strings. Hence, note that we processed the function values further so they could become strings. 
 * The `return` is always enclosed in square brackets. 
 
-## Additional work to be done -- Challenge Yourselves!
+##  8. <a name='Additionalworktobedone--ChallengeYourselves'></a>Additional work to be done -- Challenge Yourselves!
 
 1. Currently, the program assumes that all inputs are valid. In case the inputs are invalid, let the application tell the user of their error via the output area. 
 2. Format the output strings. 
