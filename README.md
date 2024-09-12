@@ -173,10 +173,13 @@ app.layout = html.Div(
 ```
 
 Things to take note: 
-1. All functions with `html.` and `dbc.` are functions that work as **HTML wrappers**.
-2. The contents of a wrapper are referred to as `children`.
-3. A wrapper can contain other wrappers.
-4. If a container has multiple children, enclose them in square brackets `[]`, 
+1. All functions with `html.` and `dbc.` are functions that represent HTML elements. 
+2. Particularly, `html.Div()` and `dbc.Card` are both container elements. 
+3. The contents of an element are referred to as `children`.
+4. An element may contain other elements.
+   - **Strings** can be the children of many elements
+   - Other data types cannot be the children of these elements. 
+5. If a container has multiple children, enclose them in square brackets `[]`, 
 
 At this point, you can run your `app.py` again to check the contents. 
 
