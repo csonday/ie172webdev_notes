@@ -6,8 +6,8 @@
 * 4. [Using CSS Classes](#UsingCSSClasses)
 * 5. [Creating CSS Classes](#CreatingCSSClasses)
 * 6. [Layouting](#Layouting)
-	* 6.1. [Units of Measure](#UnitsofMeasure)
-	* 6.2. [Margins and Padding](#MarginsandPadding)
+	* 6.1. [Container Divs](#ContainerDivs)
+	* 6.2. [Units of Measures](#UnitsofMeasures)
 	* 6.3. [Grid](#Grid)
 	* 6.4. [Flex Boxes](#FlexBoxes)
 
@@ -60,6 +60,12 @@ Put these two classes into the `className` argument of the div of interest.
         )
 ```
 
+Here are some of my most used classes:
+* `p-auto`
+* `m-auto`
+* `text-center`
+* `fw-bold`
+
 ##  5. <a name='CreatingCSSClasses'></a>Creating CSS Classes
 In programming, we do not like coding the same thing more than once. Custom CSS classes can be created for elements in your page that are repetitive. Something that I like to keep in my projects is:
 
@@ -82,11 +88,81 @@ Add 2 html.P() elements the `placeholder-text` class so your app looks like this
 
 ##  6. <a name='Layouting'></a>Layouting
 
-###  6.1. <a name='UnitsofMeasure'></a>Units of Measure
+In this section, we will learn the common concerns in layouting. \
 
-###  6.2. <a name='MarginsandPadding'></a>Margins and Padding
+###  6.1. <a name='ContainerDivs'></a>Container Divs
+Container divs all have configurable spaces around them that we can use to layout and add whitespace between elements. 
+
+![margins](./readme_img/margins.png)
+
+Let us use these margins and use a border to visualize them. Add this element to your layout, below all the existing elements.
+
+```python
+        html.Div(
+            "New div here",
+            className='border p-2, m-4'
+        )
+```
+
+Analyze the webpage using the developer tools on your browser. Press `F12`. 
+
+![inspector](./readme_img/inspector.png)
+
+You can highlight your elements and tryout some combinations of settings via the developer tools. You could also learn to read HTML here as well.
+
+###  6.2. <a name='UnitsofMeasures'></a>Units of Measures
+
+[Reference] (https://www.freecodecamp.org/news/css-unit-guide/)
+* Absolute
+  * `px` -- computer pixels
+  *  `cm` -- around 37.8 px
+  *  `mm` -- 1/10 of a cm
+  *  `in` -- 2.54 cm
+  *  `pt` -- points, equivalent to 4/3 px
+*  Relative
+   *  `em` -- relative to the font size of a parent unit
+   *  `rem` -- root em. Based on the font size **of the entire webpage**
+   *  `%` -- percentage of the parent unit
+   *  `vw` -- 1% of the width of the viewing screen. 100vw covers entire screen width.
+   *  `vh` -- 1% of the height of the viewing screen. 100vh covers the entire screen height.
+
 
 ###  6.3. <a name='Grid'></a>Grid
 
-###  6.4. <a name='FlexBoxes'></a>Flex Boxes
+Placing divs side-by-side is a common problem for beginners. One way is to adapt a grid-like treatment to the containers. 
 
+In a grid configuration, we have `dbc.Row()` that contain `dbc.Col`. Rows can expand to fill the entire screen, but each row can only have a maximum width of `12` units. 
+
+Add these elements to your layout. 
+```python
+        dbc.Row(
+            [
+                dbc.Col('R1C1, width = 8', width=8, className='border'),
+                dbc.Col('R1C2, width = 4', width=4, className='border'),
+            ]
+        ),
+        dbc.Row(
+            [
+                dbc.Col('R2C1, width = 2', width=2, className='border'),
+                dbc.Col('R2C2, width = 2', width=2, className='border'),
+            ]
+        )
+```
+
+###  6.4. <a name='FlexBoxes'></a>Flex Boxes
+Flex boxes offer another way to layout your divs side by side. 
+
+```python
+        html.Br(),
+        html.Div(
+            [
+                html.Div("box1", className='w-25 border m-auto text-center'),
+                html.Div("box2", className='w-25 border m-auto text-center'),
+            ], 
+            className='d-flex justify-content-between'
+        )
+```
+
+* `d-flex` creates a flex display
+* `justify-content-between` adds space between the components
+* `m-auto` maximizes margins and centers the content
