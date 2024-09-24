@@ -252,3 +252,7 @@ Create a file `hw3.py` and setup the following functions.
 2. Add 2 movies each for each genre. 
 3. Document your work in ppt slides -- save as pdf then submit in UVLe. 
 4. Retain your databases this time, you will use these for the next module. 
+5. Create a backup of your file. Check out [this reference for backing up your databases](https://www.pgadmin.org/docs/pgadmin4/development/backup_dialog.html)
+   1. On the sidebar, right-click on your database then select `Backup...`
+   2. Select the location for your backup file and provide a filename. 
+   3. This is all you need to do. Find the `Backup` button at the footer of the dialog box then wait for the backup to be completed. 
