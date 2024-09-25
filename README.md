@@ -4,3 +4,7 @@ This repo contains materials for studying web developement under IE 172: Informa
     - [a: Virtual Environments](https://github.com/csonday/ie172webdev_notes/tree/module1a)
     - [b: Dash](https://github.com/csonday/ie172webdev_notes/tree/module1b)
     - [c: CSS](https://github.com/csonday/ie172webdev_notes/tree/module1c)
+- Module 2: Multi-Page Application
+    - [a: Setting up the database](https://github.com/csonday/ie172webdev_notes/tree/module2a)
+    - b: App Setup
+    - c: Create Add Form
