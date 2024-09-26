@@ -171,6 +171,7 @@ So, where do we get the information to fill-in the credentials?
 
     ![servercreds](./readme_img/serverwindow.png)
 
+**NOTE on PASSWORD:** The server password is not shown in the dialog box above. You supplied it when you installed postgres. If you have forgotten your password, you may reset it [by running the SQL script here](https://stackoverflow.com/questions/12720967/how-can-i-change-a-postgresql-user-password). 
 
 Finally, check if the connection is working. On `dbconnect.py`, add the following and run the entire script. 
 
