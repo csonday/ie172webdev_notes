@@ -47,7 +47,7 @@ def displaypage (pathname):
         if pathname == '/' or pathname == '/home':
             returnlayout = home.layout
             
-        elif pathname == '/movies':
+        elif pathname == '/movies/movie_management':
             returnlayout = movie_management.layout
             
         elif pathname == '/movies/movie_management_profile':

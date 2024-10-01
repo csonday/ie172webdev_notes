@@ -77,7 +77,7 @@ layout = html.Div(
                 dbc.ModalFooter(
                     dbc.Button(
                         "Proceed",
-                        href='/movies/movies_home' # Clicking this would lead to a change of pages
+                        href='/movies/movie_management' # Clicking this would lead to a change of pages
                     )
                 )
             ],
@@ -97,7 +97,7 @@ layout = html.Div(
     ]
 )
 def movieprofile_populategenres(pathname):
-    if pathname == '/movies/movies_profile':
+    if pathname == '/movies/movie_management_profile':
         sql = """
         SELECT genre_name as label, genre_id as value
         FROM genres 
