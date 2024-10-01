@@ -230,3 +230,63 @@ Test your app. Feel free to play with the menu items.
 
 ## Your App's Landing Page
 
+Let us now create a page on your website. For our purposes, each webpage corresponds to one file in your directory. 
+
+### Setup `home.py`
+
+On `home.py`, paste the following:
+```python
+import dash
+import dash_bootstrap_components as dbc
+from dash import dcc, html
+from dash.exceptions import PreventUpdate
+
+from app import app
+
+# instead of app.layout, we just use the variable "layout" here
+# We cannot really modify the "app" variable here, we only do it in index.py
+layout = html.Div(
+    [
+        html.H2('Welcome to our app!'),
+        html.Hr(),
+        html.Div(
+            [
+                html.Span(
+                    "Thru this app, you can manage a database of movies that are classified according to genres.",
+                ),
+                html.Br(),
+                html.Br(),
+                html.Span(
+                    "Contact the owner if you need assistance!",
+                    style={'font-style':'italic'}
+                ),
+            ]
+        )
+    ]
+)
+```
+
+### Import `home` into `index`
+
+Go to `index.py` and add the following:
+```python
+from apps import home
+```
+
+### Revise the URL Callback
+
+We would like to replace the value for `returnlayout` to get the layout from `home`. The conditional on deciding what to display based on the URL should look like the following. 
+
+```python
+        if pathname == '/' or pathname == '/home':
+            returnlayout = home.layout
+            
+        elif pathname == '/movies':
+            returnlayout = 'moviepage'
+            
+        else:
+            returnlayout = 'error404'
+```
+* `home.layout` represents the `layout` variable inside the `home` module that we just imported. 
+
+Go ahead and check your work. 

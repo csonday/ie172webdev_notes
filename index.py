@@ -9,6 +9,7 @@ from dash.exceptions import PreventUpdate
 # Importing your app variable from app.py so we can use it
 from app import app
 from apps import commonmodules as cm
+from apps import home
 
 app.layout = html.Div(
     [
@@ -43,9 +44,11 @@ def displaypage (pathname):
     # This code block executes action based on the value of eventid
     if eventid == 'url':
         if pathname == '/' or pathname == '/home':
-            returnlayout = "home"
+            returnlayout = home.layout
+            
         elif pathname == '/movies':
             returnlayout = 'moviepage'
+            
         else:
             returnlayout = 'error404'
     
