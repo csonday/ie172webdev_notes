@@ -29,7 +29,7 @@ For this module, we will be creating a multi-page application. Take note of the 
 For this module, you will need the following:
 * Your workspaces with venv configured
 * A new folder to store the new app -- will be referred to as `app_folder`. 
-* An `assets` folder within the main folder for the app.
+* An `assets` folder within the main folder for the app. Make sure to update your copies of `customcss.css`.
 * The directories will look like the following: Please add the files needed.
 ```
 app_folder
