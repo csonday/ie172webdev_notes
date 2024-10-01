@@ -1,4 +1,23 @@
-## Preliminaries
+# Module 2b: App Setup
+<!-- vscode-markdown-toc -->
+* 1. [Preliminaries](#Preliminaries)
+	* 1.1. [Requirements](#Requirements)
+	* 1.2. [Review](#Review)
+* 2. [Create `app.py`](#Createapp.py)
+* 3. [Create `index.py`](#Createindex.py)
+* 4. [Switching `page-content` using URL](#Switchingpage-contentusingURL)
+* 5. [Add scripts to run the server](#Addscriptstoruntheserver)
+* 6. [Create `commonmodules.py`](#Createcommonmodules.py)
+* 7. [Your App's Landing Page](#YourAppsLandingPage)
+	* 7.1. [Setup `home.py`](#Setuphome.py)
+	* 7.2. [Import `home` into `index`](#Importhomeintoindex)
+	* 7.3. [Revise the URL Callback](#RevisetheURLCallback)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->##  1. <a name='Preliminaries'></a>Preliminaries
 
 For this module, we will be creating a multi-page application. Take note of the following aspects of the source code:
 * File Organization -- how we arrange the files needed for the application
@@ -6,7 +25,7 @@ For this module, we will be creating a multi-page application. Take note of the 
 * Code Management -- how we work with scripts and where we put them
 * Callback structures and syntax 
 
-### Requirements
+###  1.1. <a name='Requirements'></a>Requirements
 For this module, you will need the following:
 * Your workspaces with venv configured
 * A new folder to store the new app -- will be referred to as `app_folder`. 
@@ -23,7 +42,7 @@ app_folder
     |-index.py
 ```
 
-### Review
+###  1.2. <a name='Review'></a>Review
 
 The following scripts below show a breakdown of `app.py` from the previous module.
 
@@ -31,7 +50,7 @@ The following scripts below show a breakdown of `app.py` from the previous modul
 
 In this module, we will breakdown the contents of this `app.py`into multiple files. 
 
-## Create `app.py`
+##  2. <a name='Createapp.py'></a>Create `app.py`
 
 **What is this file for?** Your `app.py` creates the `app` variable and setups the application's desired configurations.
 
@@ -65,7 +84,7 @@ log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 ```
 
-## Create `index.py`
+##  3. <a name='Createindex.py'></a>Create `index.py`
 
 
 **What is this file for?** This is the *control center* of your application. This file has the following characteristics. 
@@ -98,7 +117,7 @@ app.layout = html.Div(
 
 ```
 
-## Switching `page-content` using URL
+##  4. <a name='Switchingpage-contentusingURL'></a>Switching `page-content` using URL
 Now, we introduce a callback that does the following action statement:
 > If the `url` changes, `page_content` must be updated based on the expected content.
 
@@ -139,7 +158,7 @@ def displaypage (pathname):
     
 ```
 
-## Add scripts to run the server
+##  5. <a name='Addscriptstoruntheserver'></a>Add scripts to run the server
 Do not forget to add a command to run your server. 
 
 ```python
@@ -157,7 +176,7 @@ At this point, you can test your app. Play with the URL paths to test your scrip
 
 ![](./readme_img/youtubeurl.png)
 
-## Create `commonmodules.py`
+##  6. <a name='Createcommonmodules.py'></a>Create `commonmodules.py`
 
 **What is this file for?** This file contains layouts or callbacks that are common to all modules. This excludes functions useful for all other modules. We will store them in another file called `utilities.py`
 
@@ -228,11 +247,11 @@ Test your app. Feel free to play with the menu items.
 ![](./readme_img/navbar.png)
 
 
-## Your App's Landing Page
+##  7. <a name='YourAppsLandingPage'></a>Your App's Landing Page
 
 Let us now create a page on your website. For our purposes, each webpage corresponds to one file in your directory. 
 
-### Setup `home.py`
+###  7.1. <a name='Setuphome.py'></a>Setup `home.py`
 
 On `home.py`, paste the following:
 ```python
@@ -266,14 +285,14 @@ layout = html.Div(
 )
 ```
 
-### Import `home` into `index`
+###  7.2. <a name='Importhomeintoindex'></a>Import `home` into `index`
 
 Go to `index.py` and add the following:
 ```python
 from apps import home
 ```
 
-### Revise the URL Callback
+###  7.3. <a name='RevisetheURLCallback'></a>Revise the URL Callback
 
 We would like to replace the value for `returnlayout` to get the layout from `home`. The conditional on deciding what to display based on the URL should look like the following. 
 
