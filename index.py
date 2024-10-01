@@ -10,6 +10,7 @@ from dash.exceptions import PreventUpdate
 from app import app
 from apps import commonmodules as cm
 from apps import home
+from apps.movies import movie_management, movie_management_profile
 
 app.layout = html.Div(
     [
@@ -47,7 +48,10 @@ def displaypage (pathname):
             returnlayout = home.layout
             
         elif pathname == '/movies':
-            returnlayout = 'moviepage'
+            returnlayout = movie_management.layout
+            
+        elif pathname == '/movies/movie_management_profile':
+            returnlayout = movie_management_profile.layout
             
         else:
             returnlayout = 'error404'

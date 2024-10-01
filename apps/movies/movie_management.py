@@ -4,6 +4,7 @@ from dash import dcc, html
 from dash.exceptions import PreventUpdate
 
 from app import app
+from apps.dbconnect import getDataFromDB
 
 layout = html.Div(
     [
@@ -34,25 +35,24 @@ layout = html.Div(
                                 html.H4('Find Movies'),
                                 html.Div(
                                     dbc.Form(
-                                        dbc.FormGroup(
+                                        dbc.Row(
                                             [
                                                 dbc.Label("Search Title", width=1),
                                                 dbc.Col(
                                                     dbc.Input(
                                                         type='text',
-                                                        id='movieman_titlefilter',
+                                                        id='movie_titlefilter',
                                                         placeholder='Movie Title'
                                                     ),
                                                     width=5
                                                 )
                                             ],
-                                            row=True
                                         )
                                     )
                                 ),
                                 html.Div(
                                     "Table with movies will go here.",
-                                    id='movieman_movielist'
+                                    id='movie_movielist'
                                 )
                             ]
                         )
