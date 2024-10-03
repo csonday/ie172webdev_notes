@@ -17,7 +17,8 @@
 	numbering=true
 	autoSave=true
 	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->##  1. <a name='Preliminaries'></a>Preliminaries
+<!-- /vscode-markdown-toc -->
+##  1. <a name='Preliminaries'></a>Preliminaries
 
 For this module, we will be creating a multi-page application. Take note of the following aspects of the source code:
 * File Organization -- how we arrange the files needed for the application
