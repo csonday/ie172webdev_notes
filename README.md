@@ -17,6 +17,7 @@
 For this module, you will need the following:
 * Your output from modules 2a and 2b
 * Internet connection to download scripts from git.
+* If you do not have a database yet, download `ie172sampledb.sql` from branch module2a and use it to restore to your database. 
 
 ##  2. <a name='MockupsandDesign'></a>Mockups and Design
 To organize our thoughts, we have some mockups that would serve as guides for our layout. 
