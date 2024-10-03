@@ -1,24 +1,39 @@
-## Preliminaries
+# Module 2c: Creating the Add Form
+<!-- vscode-markdown-toc -->
+* 1. [Preliminaries](#Preliminaries)
+* 2. [Mockups and Design](#MockupsandDesign)
+	* 2.1. [Workflow](#Workflow)
+	* 2.2. [Movie Management Page](#MovieManagementPage)
+	* 2.3. [Movie Form](#MovieForm)
+* 3. [Creating a New Module](#CreatingaNewModule)
+* 4. [Callbacks for `movie_management_profile`](#Callbacksformovie_management_profile)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+##  1. <a name='Preliminaries'></a>Preliminaries
 For this module, you will need the following:
 * Your output from modules 2a and 2b
 * Internet connection to download scripts from git.
 
-## Mockups and Design
+##  2. <a name='MockupsandDesign'></a>Mockups and Design
 To organize our thoughts, we have some mockups that would serve as guides for our layout. 
 
-### Workflow
+###  2.1. <a name='Workflow'></a>Workflow
 
 ![](./readme_img/workflow.jpg)
 
-### Movie Management Page
+###  2.2. <a name='MovieManagementPage'></a>Movie Management Page
 
 ![](./readme_img/movieman.jpg)
 
-### Movie Form
+###  2.3. <a name='MovieForm'></a>Movie Form
 
 ![](./readme_img/movieform.jpg)
 
-## Creating a New Module
+##  3. <a name='CreatingaNewModule'></a>Creating a New Module
 
 For code organization purposes, we create a folder inside `apps` for each set of pages that belong to a module. We will not setup the **movies module**. Do the following:
 
@@ -35,6 +50,6 @@ Test your codes by running the app. As you check the resulting layout, follow th
 * Associate the elements in both `movie_management` and `movie_management_profile` and the corresponding scripts that placed them there
 * Determine the effects of the `className` properties for the elements. Find their effects in `bootstrap.css` and `customcss.css`.
 
-## Callbacks for `movie_management_profile`
+##  4. <a name='Callbacksformovie_management_profile'></a>Callbacks for `movie_management_profile`
 There are two callbacks for movie_management_profile. Try to challenge yourselves to analyze what they do. 
 
