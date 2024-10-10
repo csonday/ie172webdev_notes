@@ -56,8 +56,7 @@ def updateRecordsTable(pathname):
     else:
         raise PreventUpdate
 
-	# Of course we have to put something to this variable
-	movie_table = []
+    movie_table = []
     
     return [movie_table]
 ```
