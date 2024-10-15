@@ -99,7 +99,7 @@ def updateRecordsTable(pathname, titlefilter):
     df['Action'] = [
         html.Div(
             dbc.Button("Edit", color='warning', size='sm', 
-                        href = f'/movies/movie_management_profile?mode=edit&id={row['id']}'),
+                        href = f"/movies/movie_management_profile?mode=edit&id={row['id']}"),
             className='text-center'
         ) for idx, row in df.iterrows()
     ]
