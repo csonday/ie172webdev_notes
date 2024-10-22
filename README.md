@@ -53,6 +53,7 @@ Add the following lines below the definition for `eventid`
 
 ```python
         parsed = urlparse(urlsearch)
+        # get the corresponding value for 'mode' from the URL
         create_mode = parse_qs(parsed.query)['mode'][0]
 ```
 
@@ -77,6 +78,8 @@ We would like to add a conditional statement to control how details are saved ba
             modal_open = True
 ```
 
+At this point, you can run the app. You should be able to save any new entries when `mode=add`, but you cannot save anything to the database when `mode=edit`. 
+
 ##  3. <a name='SetuptheEditMode'></a>Setup the Edit Mode
 At this point, we need to setup what the app does when it encounters the edit mode for the `movie_management_profile` page. To summarize, we need to add the following:
 1. A way to store the `movie_id` if we are in the edit mode.
@@ -85,7 +88,7 @@ At this point, we need to setup what the app does when it encounters the edit mo
 
 
 ###  3.1. <a name='Setupastorageformovie_id'></a>Setup a storage for `movie_id`
-A `dcc.Store` element is an invisible object that we can use to store numerals, strings, or lists. Let's add one on top of our layout for `movie_management_profile`.
+A `dcc.Store` element is an invisible object that we can use to store numerals, strings, or lists. Let's add one on top of our layout for `movie_management_profile`. Your layout definition should look like the following. 
 
 ```python
 layout = html.Div(
@@ -206,6 +209,10 @@ Try to answer the following questions based on the callback:
 * What does the function do? 
 
 
+At this point, you can run the app again, and you will have a pre-populated form when you click on any of the edit buttons. 
+
+![](./readme_img/editmoviesample.png)
+
 ###  3.4. <a name='Updatingthemovie'></a>Updating the movie
 Now, we're back to updating `movieprofile_saveprofile()`. 
 
@@ -243,7 +250,7 @@ Then, we add our `UPDATE` query:
 ```
 
 
-You can now try to edit your records. 
+You can now try to edit your records. Try saving any changes and observe these changes via pgadmin or via the app. 
 
 ##  4. <a name='Deletingineditmode'></a>Deleting in edit mode
 Now, let's add a feature where we can delete a record from view, but not really delete them from the database. For this one, we will still work on `movie_management_profile`. 
@@ -320,7 +327,7 @@ def movieprofile_populategenres(pathname, urlsearch):
 
 ###  4.3. <a name='Updatethedatabase'></a>Update the database
 Back to `movieprofile_saveprofile()`, we need to incorporate the delete indicator into saving items into the database. 
-1. Add `movieprofile_deleteind` as a state.
-2. Revise the `UPDATE` query to include `movie_delete_ind`. 
+1. Add `movieprofile_deleteind` as a state. *Hint: State()*
+2. Revise the `UPDATE` query to include `movie_delete_ind`. *Hint: modify the update query and use the value from (1) to determine the stored value for `movie_delete_ind`.* 
 
-Try out the application. 
+Try out the application. Try deleting a record. 
